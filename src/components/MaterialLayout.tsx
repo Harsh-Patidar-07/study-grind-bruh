@@ -1,8 +1,6 @@
-
-import { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import MaterialSidebar from "./MaterialSidebar";
-import { MenuIcon, X } from "lucide-react";
+import MaterialHeader from "./MaterialHeader";
+import MaterialSidebar from "./MaterialSidebar"; // Import this if you have a sidebar
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { MaterialIconButton } from "./material";
@@ -34,57 +32,16 @@ const MaterialLayout = () => {
   }, [isMobile]);
 
   return (
-    <div className="min-h-screen flex bg-background">
-      {/* Mobile overlay */}
-      {isMobile && sidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <MaterialHeader />
       
-      {/* Sidebar */}
-      <div 
-        className={cn(
-          "fixed top-0 bottom-0 z-50 transition-transform duration-200 ease-in-out",
-          isMobile ? "w-72" : "w-64",
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        )}
-      >
-        <MaterialSidebar closeSidebar={() => setSidebarOpen(false)} />
-      </div>
-      
-      {/* Main content */}
-      <div className={cn(
-        "flex-1 transition-all duration-200 ease-in-out min-h-screen flex flex-col",
-        sidebarOpen && !isMobile ? "ml-64" : "ml-0"
-      )}>
-        {/* Mobile header bar */}
-        <div className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border p-3 sm:p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <MaterialIconButton
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                ariaLabel="Toggle sidebar"
-                className="flex items-center justify-center"
-                icon={sidebarOpen ? <X size={20} /> : <MenuIcon size={20} />}
-              />
-            </div>
-            
-            <div className="sm:hidden text-center font-medium">
-              {isClassroomMode ? "Classroom" : "Self Study"}
-            </div>
-            
-            <div className="h-10 w-10 rounded-full bg-muted/30 flex items-center justify-center sm:hidden">
-              <span className="font-semibold">G</span>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-1">
+        {/* If you have a sidebar, include it here */}
+        {/* <MaterialSidebar /> */}
         
-        {/* Page content */}
-        <div className="flex-1 pb-20">
+        <main className="flex-1 p-4 md:p-6">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );
