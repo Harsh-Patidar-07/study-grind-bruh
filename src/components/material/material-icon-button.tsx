@@ -55,7 +55,7 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
         case 'tonal':
           return 'md-tonal-icon-button';
         default:
-          return 'md-standard-icon-button';
+          return 'md-icon-button'; // Changed to md-icon-button from md-standard-icon-button
       }
     }, [variant]);
 

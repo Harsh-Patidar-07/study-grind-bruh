@@ -19,9 +19,9 @@ import '@material/web/textfield/filled-text-field.js';
 import '@material/web/progress/circular-progress.js';
 
 // Using proper Material Web icon button component imports
-import '@material/web/iconbutton/filled-icon-button.js';
-import '@material/web/iconbutton/outlined-icon-button.js';
-import '@material/web/iconbutton/standard-icon-button.js';
+import '@material/web/icon-button/filled-icon-button.js';
+import '@material/web/icon-button/outlined-icon-button.js';
+import '@material/web/icon-button/icon-button.js';
 
 // For app icons
 import '@material/web/icon/icon.js';
@@ -35,7 +35,7 @@ declare global {
       'md-text-button': any;
       'md-elevated-button': any;
       'md-tonal-button': any;
-      'md-standard-icon-button': any;
+      'md-icon-button': any;
       'md-filled-icon-button': any;
       'md-outlined-icon-button': any;
       'md-tonal-icon-button': any;
