@@ -1,12 +1,11 @@
+
 import { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import MaterialSidebar from "./MaterialSidebar";
 import { MenuIcon, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-
-// Import Material Web components
-import '@material/web/iconbutton/standard-icon-button.js';
+import { MaterialIconButton } from "./material";
 
 const MaterialLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -64,13 +63,12 @@ const MaterialLayout = () => {
         <div className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border p-3 sm:p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <md-standard-icon-button 
+              <MaterialIconButton
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                aria-label="Toggle sidebar"
-                class="flex items-center justify-center"
-              >
-                {sidebarOpen ? <X size={20} /> : <MenuIcon size={20} />}
-              </md-standard-icon-button>
+                ariaLabel="Toggle sidebar"
+                className="flex items-center justify-center"
+                icon={sidebarOpen ? <X size={20} /> : <MenuIcon size={20} />}
+              />
             </div>
             
             <div className="sm:hidden text-center font-medium">

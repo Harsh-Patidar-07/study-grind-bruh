@@ -1,7 +1,8 @@
+
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface MaterialSwitchProps extends React.HTMLAttributes<HTMLElement> {
+export interface MaterialSwitchProps extends Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
@@ -29,11 +30,7 @@ const MaterialSwitch = React.forwardRef<HTMLElement, MaterialSwitchProps>(
     };
 
     React.useEffect(() => {
-      const switchElement = ref?.current as HTMLElement & { 
-        selected: boolean;
-        addEventListener: HTMLElement['addEventListener'];
-        removeEventListener: HTMLElement['removeEventListener'];
-      };
+      const switchElement = ref && 'current' in ref ? ref.current : null;
       
       if (switchElement) {
         // Add change event listener
@@ -48,9 +45,10 @@ const MaterialSwitch = React.forwardRef<HTMLElement, MaterialSwitchProps>(
 
     // Update the selected state when checked changes
     React.useEffect(() => {
-      const switchElement = ref?.current as HTMLElement & { selected: boolean };
+      const switchElement = ref && 'current' in ref ? ref.current : null;
+      
       if (switchElement && checked !== undefined) {
-        switchElement.selected = checked;
+        (switchElement as any).selected = checked;
       }
     }, [checked, ref]);
 

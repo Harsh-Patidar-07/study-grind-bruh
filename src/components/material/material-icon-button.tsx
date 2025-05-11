@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -44,6 +45,7 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
     children,
     ...props 
   }, ref) => {
+    // Changed to use icon-button instead of iconbutton
     const Tag = React.useMemo(() => {
       switch (variant) {
         case 'filled':
@@ -53,22 +55,18 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
         case 'tonal':
           return 'md-tonal-icon-button';
         default:
-          return 'md-standard-icon-button';
+          return 'md-icon-button'; // Changed from md-standard-icon-button to md-icon-button
       }
     }, [variant]);
 
-    return (
-      <Tag
-        ref={ref as any}
-        class={cn(materialIconButtonVariants({ variant, size, className }))}
-        disabled={disabled}
-        aria-label={ariaLabel}
-        {...props}
-      >
-        {icon}
-        {children}
-      </Tag>
-    );
+    return React.createElement(Tag, {
+      ref: ref,
+      class: cn(materialIconButtonVariants({ variant, size, className })),
+      disabled: disabled,
+      'aria-label': ariaLabel,
+      ...props,
+      children: [icon, children].filter(Boolean)
+    });
   }
 );
 

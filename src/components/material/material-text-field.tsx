@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -83,11 +84,7 @@ const MaterialTextField = React.forwardRef<HTMLElement, MaterialTextFieldProps>(
     };
 
     React.useEffect(() => {
-      const textField = ref?.current as HTMLElement & { 
-        value: string;
-        addEventListener: HTMLElement['addEventListener'];
-        removeEventListener: HTMLElement['removeEventListener'];
-      };
+      const textField = ref && 'current' in ref ? ref.current : null;
       
       if (textField) {
         textField.addEventListener('input', handleValueChange);
@@ -100,32 +97,29 @@ const MaterialTextField = React.forwardRef<HTMLElement, MaterialTextFieldProps>(
 
     // Update the value when it changes externally
     React.useEffect(() => {
-      const textField = ref?.current as HTMLElement & { value: string };
+      const textField = ref && 'current' in ref ? ref.current : null;
+      
       if (textField && value !== undefined) {
-        textField.value = value as string;
+        (textField as any).value = value as string;
       }
     }, [value, ref]);
 
-    return (
-      <Tag
-        ref={ref as any}
-        class={cn(materialTextFieldVariants({ variant, size, className }))}
-        label={label}
-        type={type}
-        disabled={disabled}
-        error={error}
-        required={required}
-        value={value as string}
-        defaultValue={defaultValue as string}
-        {...(supportingText ? { 'supporting-text': supportingText } : {})}
-        {...(leadingIcon ? { 'leading-icon': true } : {})}
-        {...(trailingIcon ? { 'trailing-icon': true } : {})}
-        {...props}
-      >
-        {leadingIcon}
-        {trailingIcon}
-      </Tag>
-    );
+    return React.createElement(Tag, {
+      ref: ref,
+      class: cn(materialTextFieldVariants({ variant, size, className })),
+      label: label,
+      type: type,
+      disabled: disabled,
+      error: error,
+      required: required,
+      value: value as string,
+      defaultValue: defaultValue as string,
+      ...(supportingText ? { 'supporting-text': supportingText } : {}),
+      ...(leadingIcon ? { 'leading-icon': true } : {}),
+      ...(trailingIcon ? { 'trailing-icon': true } : {}),
+      ...props,
+      children: [leadingIcon, trailingIcon].filter(Boolean)
+    });
   }
 );
 

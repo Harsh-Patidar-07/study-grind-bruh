@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -68,19 +69,16 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
       }
     }, [variant]);
 
-    return (
-      <Tag
-        ref={ref as any}
-        class={cn(materialButtonVariants({ variant, size, className }))}
-        disabled={disabled}
-        type={type}
-        {...(trailingIcon ? { 'trailing-icon': true } : {})}
-        {...(hasIcon ? { 'has-icon': true } : {})}
-        {...props}
-      >
-        {children}
-      </Tag>
-    );
+    return React.createElement(Tag, {
+      ref: ref,
+      class: cn(materialButtonVariants({ variant, size, className })),
+      disabled: disabled,
+      type: type,
+      ...(trailingIcon ? { 'trailing-icon': true } : {}),
+      ...(hasIcon ? { 'has-icon': true } : {}),
+      ...props,
+      children
+    });
   }
 );
 
