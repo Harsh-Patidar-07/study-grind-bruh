@@ -6,7 +6,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 
+// Import standard and material layouts
 import Layout from "./components/Layout";
+import MaterialLayout from "./components/MaterialLayout";
+
 import Index from "./pages/Index";
 import PomodoroPage from "./pages/PomodoroPage";
 import TodoPage from "./pages/TodoPage";
@@ -22,12 +25,19 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Initialize theme based on localStorage
+    // Initialize theme based on localStorage and system preference
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       document.documentElement.classList.add('dark');
-    } else {
+      document.documentElement.classList.remove('light');
+    } else if (savedTheme === 'light') {
+      document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
+    } else {
+      // Default to dark theme as per Gen-Z preference
+      document.documentElement.classList.add('dark');
     }
   }, []);
 
@@ -38,7 +48,8 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route element={<Layout />}>
+            {/* Use Material Layout */}
+            <Route element={<MaterialLayout />}>
               <Route path="/" element={<Index />} />
               <Route path="/pomodoro" element={<PomodoroPage />} />
               <Route path="/todo" element={<TodoPage />} />
@@ -55,6 +66,9 @@ const App = () => {
       </TooltipProvider>
     </QueryClientProvider>
   );
+};
+
+export default App;
 };
 
 export default App;

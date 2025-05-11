@@ -1,13 +1,120 @@
-
+/* filepath: vscode-vfs://github/Harsh-Patidar-07/study-grind-bruh/src/index.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Material Design 3 theme variables */
 @layer base {
   :root {
-    /* Dark theme by default because gen-z said so */
+    /* Light theme variables */
+    --md-sys-color-primary: 260 84% 54%;
+    --md-sys-color-on-primary: 0 0% 100%;
+    --md-sys-color-primary-container: 260 84% 90%;
+    --md-sys-color-on-primary-container: 260 84% 20%;
+    
+    --md-sys-color-secondary: 260 25% 44%;
+    --md-sys-color-on-secondary: 0 0% 100%;
+    --md-sys-color-secondary-container: 260 25% 90%;
+    --md-sys-color-on-secondary-container: 260 25% 20%;
+    
+    --md-sys-color-tertiary: 150 84% 40%;
+    --md-sys-color-on-tertiary: 0 0% 100%;
+    --md-sys-color-tertiary-container: 150 84% 90%;
+    --md-sys-color-on-tertiary-container: 150 84% 20%;
+    
+    --md-sys-color-surface: 0 0% 98%;
+    --md-sys-color-on-surface: 0 0% 10%;
+    --md-sys-color-surface-variant: 260 10% 93%;
+    --md-sys-color-on-surface-variant: 260 10% 30%;
+    
+    --md-sys-color-error: 0 84% 45%;
+    --md-sys-color-on-error: 0 0% 100%;
+    --md-sys-color-error-container: 0 84% 90%;
+    --md-sys-color-on-error-container: 0 84% 20%;
+    
+    --md-sys-color-background: 0 0% 98%;
+    --md-sys-color-on-background: 0 0% 10%;
+    
+    --md-sys-color-outline: 260 10% 60%;
+    --md-sys-color-outline-variant: 260 10% 80%;
+    
+    /* Traditional variables for compatibility */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 260 84% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 25% 44%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 260 10% 93%;
+    --muted-foreground: 260 10% 40%;
+
+    --accent: 150 84% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 10% 85%;
+    --input: 260 10% 93%;
+    --ring: 260 84% 54%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 260 84% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 10% 93%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 260 10% 85%;
+    --sidebar-ring: 260 84% 54%;
+  }
+
+  .dark {
+    /* Dark theme variables */
+    --md-sys-color-primary: 260 84% 74%;
+    --md-sys-color-on-primary: 0 0% 0%;
+    --md-sys-color-primary-container: 260 84% 24%;
+    --md-sys-color-on-primary-container: 260 84% 90%;
+    
+    --md-sys-color-secondary: 260 25% 64%;
+    --md-sys-color-on-secondary: 0 0% 0%;
+    --md-sys-color-secondary-container: 260 25% 24%;
+    --md-sys-color-on-secondary-container: 260 25% 90%;
+    
+    --md-sys-color-tertiary: 150 84% 60%;
+    --md-sys-color-on-tertiary: 0 0% 0%;
+    --md-sys-color-tertiary-container: 150 84% 24%;
+    --md-sys-color-on-tertiary-container: 150 84% 90%;
+    
+    --md-sys-color-surface: 240 10% 10%;
+    --md-sys-color-on-surface: 0 0% 98%;
+    --md-sys-color-surface-variant: 260 10% 16%;
+    --md-sys-color-on-surface-variant: 260 10% 80%;
+    
+    --md-sys-color-error: 0 84% 60%;
+    --md-sys-color-on-error: 0 0% 0%;
+    --md-sys-color-error-container: 0 84% 24%;
+    --md-sys-color-on-error-container: 0 84% 90%;
+    
+    --md-sys-color-background: 240 10% 7%;
+    --md-sys-color-on-background: 0 0% 98%;
+    
+    --md-sys-color-outline: 260 10% 50%;
+    --md-sys-color-outline-variant: 260 10% 30%;
+    
+    /* Traditional variables for compatibility */
     --background: 240 10% 7%;
     --foreground: 0 0% 98%;
 
@@ -51,42 +158,121 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  /* Material Design inspired elevation classes */
-  .elevation-1 {
-    @apply shadow-md;
+  /* Material Design 3 shape styles */
+  .md-elevation-1 {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
   
-  .elevation-2 {
-    @apply shadow-lg;
+  .md-elevation-2 {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
-  .elevation-3 {
-    @apply shadow-xl;
+  .md-elevation-3 {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
-  /* Custom scrollbar for the Gen Z aesthetic */
+  .md-shape-small {
+    border-radius: 0.25rem;
+  }
+
+  .md-shape-medium {
+    border-radius: 0.5rem;
+  }
+
+  .md-shape-large {
+    border-radius: 0.75rem;
+  }
+
+  .md-shape-extra-large {
+    border-radius: 1rem;
+  }
+
+  /* Custom scrollbar with Material Design aesthetic */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-muted/30 rounded-full;
+    background-color: hsla(var(--muted) / 0.3);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/60 rounded-full;
+    background-color: hsla(var(--primary) / 0.6);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary;
+    background-color: hsl(var(--primary));
+  }
+
+  /* Material Web theme adaption */
+  md-filled-button {
+    --md-filled-button-container-color: hsl(var(--primary));
+    --md-filled-button-label-text-color: hsl(var(--primary-foreground));
+  }
+
+  md-outlined-button {
+    --md-outlined-button-outline-color: hsl(var(--border));
+    --md-outlined-button-label-text-color: hsl(var(--primary));
+  }
+
+  md-text-button {
+    --md-text-button-label-text-color: hsl(var(--primary));
+  }
+
+  md-elevated-button {
+    --md-elevated-button-container-color: hsl(var(--background));
+    --md-elevated-button-label-text-color: hsl(var(--primary));
+  }
+
+  md-standard-icon-button {
+    --md-standard-icon-button-icon-color: hsl(var(--foreground));
+  }
+
+  md-filled-text-field {
+    --md-filled-text-field-container-color: hsl(var(--input));
+    --md-filled-text-field-label-text-color: hsl(var(--foreground));
+    --md-filled-text-field-input-text-color: hsl(var(--foreground));
+  }
+
+  md-outlined-text-field {
+    --md-outlined-text-field-outline-color: hsl(var(--border));
+    --md-outlined-text-field-label-text-color: hsl(var(--foreground));
+    --md-outlined-text-field-input-text-color: hsl(var(--foreground));
+  }
+
+  md-switch {
+    --md-switch-selected-handle-color: hsl(var(--primary));
+    --md-switch-selected-track-color: hsla(var(--primary) / 0.3);
+    --md-switch-unselected-handle-color: hsl(var(--muted-foreground));
+    --md-switch-unselected-track-color: hsla(var(--muted-foreground) / 0.2);
+  }
+
+  /* Use system preference if no theme is selected */
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+      color-scheme: dark;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not(.dark) {
+      color-scheme: light;
+    }
   }
 }
 
@@ -100,23 +286,133 @@
   }
   
   .glass {
-    @apply bg-background/60 backdrop-blur-md border border-white/10;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
+  .dark .glass {
+    background: rgba(20, 20, 30, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Material Web ripple effect */
+  .md-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .md-ripple::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    border-radius: inherit;
+  }
+  
+  .md-ripple:active::after {
+    background-color: hsla(var(--primary) / 0.15);
+    transform: scale(0.95);
+  }
+  
+  /* Material Web state layers */
+  .md-state-layer-hover:hover {
+    background-color: hsla(var(--primary) / 0.08);
+  }
+  
+  .md-state-layer-focus:focus-visible {
+    background-color: hsla(var(--primary) / 0.12);
+  }
+  
+  .md-state-layer-pressed:active {
+    background-color: hsla(var(--primary) / 0.15);
+  }
+  
+  /* Material Web elevation transitions */
+  .md-elevation-transition {
+    transition: box-shadow 0.2s ease;
   }
 }
 
+/* Material Web components registration */
+/* Makes the custom elements render properly with display block */
 @layer components {
+  md-filled-button,
+  md-outlined-button,
+  md-text-button,
+  md-elevated-button,
+  md-fab,
+  md-icon-button,
+  md-checkbox,
+  md-switch,
+  md-radio,
+  md-list,
+  md-list-item,
+  md-menu,
+  md-menu-item,
+  md-tabs,
+  md-tab,
+  md-icon,
+  md-divider,
+  md-circular-progress,
+  md-dialog,
+  md-text-field,
+  md-outlined-text-field,
+  md-filled-text-field,
+  md-card {
+    display: block;
+  }
+  
   .btn-genz {
-    @apply bg-genz-purple text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 
-    hover:bg-genz-blue hover:shadow-lg hover:shadow-genz-purple/20 active:scale-95;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-genz:hover {
+    background-color: hsla(var(--primary) / 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+  
+  .btn-genz:active {
+    transform: scale(0.95);
   }
 
   .card-genz {
-    @apply bg-card rounded-xl p-4 border border-border elevation-1 transition-all duration-300 
-    hover:elevation-2 hover:border-genz-purple/50;
+    background-color: hsl(var(--card));
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+  }
+  
+  .card-genz:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-color: hsla(var(--primary) / 0.3);
   }
 
   .input-genz {
-    @apply bg-input text-foreground border border-border rounded-lg px-4 py-2 outline-none focus:ring-2 
-    focus:ring-genz-purple/50 transition duration-300;
+    background-color: hsl(var(--input));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    transition: all 0.3s;
+  }
+  
+  .input-genz:focus {
+    box-shadow: 0 0 0 2px hsla(var(--primary) / 0.5);
+    border-color: hsl(var(--primary));
   }
 }
