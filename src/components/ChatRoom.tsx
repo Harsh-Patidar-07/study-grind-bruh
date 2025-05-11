@@ -1,8 +1,7 @@
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Send, EmojiSmile } from 'lucide-react';
+import { Send, Smile } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ChatMessage {
@@ -167,7 +166,7 @@ const ChatRoom: React.FC<ChatRoomProps> = ({ className }) => {
       
       <div className="flex gap-2 mt-auto">
         <Button variant="ghost" size="icon" className="flex-shrink-0">
-          <EmojiSmile size={20} />
+          <Smile size={20} />
         </Button>
         <Input
           value={newMessage}
