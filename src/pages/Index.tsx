@@ -82,10 +82,10 @@ const Index = () => {
   
   const getRandomTip = () => {
     const tips = [
-      "Try the 50/10 rule - study for 50 minutes, break for 10",
-      "Explaining concepts to others improves your understanding",
-      "Create a dedicated, distraction-free study space",
-      "Use active recall instead of passive re-reading",
+      "Are bhai padhai chhodo movies dekho",
+      "Timepass karo mauj karo life jeeyo",
+      "Your mom doesnt know if you're studying or not",
+      "Hell yeah, you dont need to get motivated",
       "Break large tasks into smaller, manageable chunks",
       "Stay hydrated while studying - it improves brain function",
       "Review your notes within 24 hours of taking them",
