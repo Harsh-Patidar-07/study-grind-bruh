@@ -1,14 +1,19 @@
 
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { MenuIcon, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import ModeToggle from "./ModeToggle";
 
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const isMobile = useIsMobile();
+  const location = useLocation();
+  
+  // Check if we're in classroom mode based on the current route
+  const isClassroomMode = ['/chat', '/notes', '/announcements', '/classroom'].includes(location.pathname);
   
   useEffect(() => {
     if (isMobile) {
@@ -44,19 +49,25 @@ const Layout = () => {
         "flex-1 transition-all duration-300 ease-in-out min-h-screen flex flex-col",
         sidebarOpen && !isMobile ? "ml-64" : "ml-0"
       )}>
-        {/* Mobile sidebar toggle */}
+        {/* Mobile header bar */}
         <div className="sticky top-0 z-30 bg-background/80 backdrop-blur-sm border-b border-border p-3 sm:p-4">
           <div className="flex items-center justify-between">
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
-              aria-label="Toggle sidebar"
-            >
-              {sidebarOpen ? <X size={20} /> : <MenuIcon size={20} />}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                aria-label="Toggle sidebar"
+              >
+                {sidebarOpen ? <X size={20} /> : <MenuIcon size={20} />}
+              </button>
+              
+              {isMobile && (
+                <ModeToggle />
+              )}
+            </div>
             
             <div className="sm:hidden text-center font-medium">
-              StudyBST
+              {isClassroomMode ? "Classroom" : "Self Study"}
             </div>
             
             <div className="h-10 w-10 rounded-full bg-muted/30 flex items-center justify-center sm:hidden">
