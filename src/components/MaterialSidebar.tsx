@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Clock, 
@@ -10,7 +11,7 @@ import {
   GraduationCap 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import MaterialThemeToggle from './MaterialThemeToggle';
+import ThemeToggle from './ThemeToggle';
 
 // Import required material components
 import '@material/web/list/list.js';
@@ -39,7 +40,7 @@ const MaterialNavItem = ({ icon: Icon, label, path, current, onClick }: NavItemP
         "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 md-ripple",
         current 
           ? "bg-primary text-primary-foreground font-medium" 
-          : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-white"
+          : "text-foreground hover:bg-muted hover:text-foreground"
       )}
     >
       <Icon className="h-5 w-5" />
@@ -77,30 +78,25 @@ const MaterialSidebar = ({ closeSidebar }: SidebarProps) => {
   const navItems = isClassroomMode ? classroomNavItems : selfStudyNavItems;
 
   return (
-    <div className="h-screen w-64 bg-sidebar-background flex flex-col border-r border-sidebar-border md-elevation-2">
-      <div className="p-4">
+    <div className="h-full bg-background flex flex-col border-r border-border shadow-sm">
+      <div className="p-4 border-b border-border">
         <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-bold">S</span>
           </div>
           <h1 className="font-bold text-xl">StudyBST</h1>
-          <span className="text-xs bg-genz-green text-black px-1.5 rounded-md ml-auto">beta</span>
         </Link>
       </div>
       
-      <div className="px-3 py-2">
-        <div className="mb-6">
-          <MaterialThemeToggle />
-        </div>
-        
+      <div className="px-3 py-4 flex-1">
         <p className={cn(
-          "text-xs text-muted-foreground font-medium px-3 py-1 uppercase tracking-wider",
+          "text-xs text-muted-foreground font-medium px-3 py-2 uppercase tracking-wider",
           isClassroomMode ? "text-genz-green" : "text-primary"
         )}>
           {isClassroomMode ? "Classroom Mode" : "Self Study Mode"}
         </p>
         
-        <md-list>
+        <div className="mt-2 space-y-1">
           {navItems.map((item) => (
             <MaterialNavItem 
               key={item.path}
@@ -111,18 +107,21 @@ const MaterialSidebar = ({ closeSidebar }: SidebarProps) => {
               onClick={closeSidebar}
             />
           ))}
-        </md-list>
+        </div>
       </div>
       
-      <div className="mt-auto p-4 border-t border-sidebar-border">
-        <div className="flex items-center gap-3 mt-4">
-          <div className="h-9 w-9 rounded-full bg-genz-blue flex items-center justify-center">
-            <span className="font-bold text-white">G</span>
+      <div className="mt-auto p-4 border-t border-border">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-full bg-primary/80 flex items-center justify-center">
+              <span className="font-bold text-white">U</span>
+            </div>
+            <div>
+              <p className="text-sm font-medium">User</p>
+              <p className="text-xs text-muted-foreground">Student</p>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-medium">Gen Z Legend</p>
-            <p className="text-xs text-muted-foreground">Barely surviving</p>
-          </div>
+          <ThemeToggle />
         </div>
       </div>
     </div>
