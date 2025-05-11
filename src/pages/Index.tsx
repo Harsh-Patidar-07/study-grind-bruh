@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -20,6 +19,7 @@ const Index = () => {
       path: "/self-study",
       color: "text-genz-blue",
       bgColor: "bg-genz-blue/10",
+      borderColor: "border-t-genz-blue"
     },
     {
       title: "Pomodoro Timer",
@@ -28,6 +28,7 @@ const Index = () => {
       path: "/pomodoro",
       color: "text-genz-purple",
       bgColor: "bg-genz-purple/10",
+      borderColor: "border-t-genz-purple"
     },
     {
       title: "To-Do List",
@@ -36,6 +37,7 @@ const Index = () => {
       path: "/todo",
       color: "text-genz-green",
       bgColor: "bg-genz-green/10",
+      borderColor: "border-t-genz-green"
     },
     {
       title: "Study Sources",
@@ -44,6 +46,7 @@ const Index = () => {
       path: "/study-sources",
       color: "text-genz-purple",
       bgColor: "bg-genz-purple/10",
+      borderColor: "border-t-genz-pink"
     },
   ];
 
@@ -55,6 +58,7 @@ const Index = () => {
       path: "/classroom",
       color: "text-genz-green",
       bgColor: "bg-genz-green/10",
+      borderColor: "border-t-genz-green"
     },
     {
       title: "Discord But Dumber",
@@ -63,6 +67,7 @@ const Index = () => {
       path: "/chat",
       color: "text-genz-blue",
       bgColor: "bg-genz-blue/10",
+      borderColor: "border-t-genz-blue"
     },
     {
       title: "Broke Kids' Dropbox",
@@ -71,6 +76,7 @@ const Index = () => {
       path: "/notes",
       color: "text-genz-orange",
       bgColor: "bg-genz-orange/10",
+      borderColor: "border-t-genz-orange"
     },
     {
       title: "Announcement Feed",
@@ -79,6 +85,7 @@ const Index = () => {
       path: "/announcements",
       color: "text-genz-pink",
       bgColor: "bg-genz-pink/10",
+      borderColor: "border-t-genz-pink"
     },
   ];
   
@@ -114,7 +121,6 @@ const Index = () => {
             <Button 
               size={isMobile ? "default" : "lg"}
               onClick={() => navigate("/self-study")}
-              className="animate-pulse-glow"
             >
               Start Studying
             </Button>
@@ -142,7 +148,7 @@ const Index = () => {
           {selfStudyFeatures.map((feature) => (
             <Card 
               key={feature.path}
-              className="border border-border bg-card hover:border-primary/30 transition-all duration-300 cursor-pointer overflow-hidden relative"
+              className={`border border-border ${feature.borderColor} border-t-4 bg-card hover:border-primary/30 transition-all duration-200 cursor-pointer overflow-hidden relative shadow-sm`}
               onClick={() => navigate(feature.path)}
             >
               <div className="p-4 md:p-6">
@@ -172,7 +178,7 @@ const Index = () => {
           {classroomFeatures.map((feature) => (
             <Card 
               key={feature.path}
-              className="border border-border bg-card hover:border-primary/30 transition-all duration-300 cursor-pointer overflow-hidden relative"
+              className={`border border-border ${feature.borderColor} border-t-4 bg-card hover:border-primary/30 transition-all duration-200 cursor-pointer overflow-hidden relative shadow-sm`}
               onClick={() => navigate(feature.path)}
             >
               <div className="p-4 md:p-6">

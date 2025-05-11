@@ -26,12 +26,12 @@ const ModeToggle: React.FC<ModeToggleProps> = ({ className }) => {
   };
 
   return (
-    <div className={cn("flex rounded-lg border border-border p-1 gap-1", className)}>
+    <div className={cn("flex rounded-md border border-border p-1 gap-1 shadow-sm", className)}>
       <Button 
         variant={isSelfStudyMode ? "default" : "ghost"}
         size="sm"
         className={cn(
-          "flex-1 gap-2",
+          "flex-1 gap-2 transition-colors duration-200",
           isSelfStudyMode ? "bg-genz-purple text-white" : "text-muted-foreground"
         )}
         onClick={() => handleModeChange('self-study')}
@@ -44,7 +44,7 @@ const ModeToggle: React.FC<ModeToggleProps> = ({ className }) => {
         variant={isClassroomMode ? "default" : "ghost"}
         size="sm"
         className={cn(
-          "flex-1 gap-2",
+          "flex-1 gap-2 transition-colors duration-200",
           isClassroomMode ? "bg-genz-green text-white" : "text-muted-foreground"
         )}
         onClick={() => handleModeChange('classroom')}

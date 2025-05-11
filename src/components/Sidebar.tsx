@@ -12,35 +12,42 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ModeToggle from './ModeToggle';
+import ThemeToggle from './ThemeToggle';
 
 interface NavItemProps {
   icon: React.ElementType;
   label: string;
   path: string;
   current: boolean;
+  onClick?: () => void;
 }
 
-const NavItem = ({ icon: Icon, label, path, current }: NavItemProps) => {
+interface SidebarProps {
+  closeSidebar?: () => void;
+}
+
+const NavItem = ({ icon: Icon, label, path, current, onClick }: NavItemProps) => {
   return (
     <Link 
       to={path} 
+      onClick={onClick}
       className={cn(
-        "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300",
+        "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200",
         current 
-          ? "bg-genz-purple text-white font-medium animate-pulse-glow" 
+          ? "bg-genz-purple text-white font-medium" 
           : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-white"
       )}
     >
       <Icon className="h-5 w-5" />
       <span>{label}</span>
       {current && (
-        <div className="ml-auto h-2 w-2 rounded-full bg-white animate-pulse"></div>
+        <div className="ml-auto h-2 w-2 rounded-full bg-white"></div>
       )}
     </Link>
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ({ closeSidebar }: SidebarProps) => {
   const location = useLocation();
   const currentPath = location.pathname;
   
@@ -66,13 +73,13 @@ const Sidebar = () => {
   const navItems = isClassroomMode ? classroomNavItems : selfStudyNavItems;
 
   return (
-    <div className="h-screen w-64 bg-sidebar flex flex-col border-r border-sidebar-border">
+    <div className="h-screen w-64 bg-sidebar flex flex-col border-r border-sidebar-border shadow-lg">
       <div className="p-4">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-genz-purple flex items-center justify-center">
+          <div className="h-8 w-8 rounded-md bg-genz-purple flex items-center justify-center">
             <span className="text-white font-bold">S</span>
           </div>
-          <h1 className="font-bold text-xl text-glow">StudyBST</h1>
+          <h1 className="font-bold text-xl">StudyBST</h1>
           <span className="text-xs bg-genz-green text-black px-1.5 rounded-md ml-auto">beta</span>
         </Link>
       </div>
@@ -95,13 +102,15 @@ const Sidebar = () => {
               label={item.label}
               path={item.path}
               current={currentPath === item.path}
+              onClick={closeSidebar}
             />
           ))}
         </nav>
       </div>
       
       <div className="mt-auto p-4 border-t border-sidebar-border">
-        <div className="flex items-center gap-3">
+        <ThemeToggle />
+        <div className="flex items-center gap-3 mt-4">
           <div className="h-9 w-9 rounded-full bg-genz-blue flex items-center justify-center">
             <span className="font-bold text-white">G</span>
           </div>
