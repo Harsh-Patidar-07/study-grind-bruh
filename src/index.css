@@ -8,16 +8,16 @@
 /* Material Design 3 theme variables */
 @layer base {
   :root {
-    /* Light theme variables */
-    --md-sys-color-primary: 260 84% 54%;
+    /* Light theme variables - Material Design blue primary */
+    --md-sys-color-primary: 210 100% 50%;
     --md-sys-color-on-primary: 0 0% 100%;
-    --md-sys-color-primary-container: 260 84% 90%;
-    --md-sys-color-on-primary-container: 260 84% 20%;
+    --md-sys-color-primary-container: 210 100% 94%;
+    --md-sys-color-on-primary-container: 210 100% 20%;
     
-    --md-sys-color-secondary: 260 25% 44%;
+    --md-sys-color-secondary: 210 50% 40%;
     --md-sys-color-on-secondary: 0 0% 100%;
-    --md-sys-color-secondary-container: 260 25% 90%;
-    --md-sys-color-on-secondary-container: 260 25% 20%;
+    --md-sys-color-secondary-container: 210 50% 90%;
+    --md-sys-color-on-secondary-container: 210 50% 20%;
     
     --md-sys-color-tertiary: 150 84% 40%;
     --md-sys-color-on-tertiary: 0 0% 100%;
@@ -26,8 +26,8 @@
     
     --md-sys-color-surface: 0 0% 98%;
     --md-sys-color-on-surface: 0 0% 10%;
-    --md-sys-color-surface-variant: 260 10% 93%;
-    --md-sys-color-on-surface-variant: 260 10% 30%;
+    --md-sys-color-surface-variant: 210 10% 93%;
+    --md-sys-color-on-surface-variant: 210 10% 30%;
     
     --md-sys-color-error: 0 84% 45%;
     --md-sys-color-on-error: 0 0% 100%;
@@ -37,8 +37,8 @@
     --md-sys-color-background: 0 0% 98%;
     --md-sys-color-on-background: 0 0% 10%;
     
-    --md-sys-color-outline: 260 10% 60%;
-    --md-sys-color-outline-variant: 260 10% 80%;
+    --md-sys-color-outline: 210 10% 60%;
+    --md-sys-color-outline-variant: 210 10% 80%;
     
     /* Traditional variables for compatibility */
     --background: 0 0% 98%;
@@ -50,14 +50,14 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 260 84% 54%;
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 25% 44%;
+    --secondary: 210 50% 40%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 260 10% 93%;
-    --muted-foreground: 260 10% 40%;
+    --muted: 210 10% 93%;
+    --muted-foreground: 210 10% 40%;
 
     --accent: 150 84% 40%;
     --accent-foreground: 0 0% 100%;
@@ -65,33 +65,24 @@
     --destructive: 0 84% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 260 10% 85%;
-    --input: 260 10% 93%;
-    --ring: 260 84% 54%;
+    --border: 210 10% 85%;
+    --input: 210 10% 93%;
+    --ring: 210 100% 50%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 260 84% 54%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 10% 93%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 260 10% 85%;
-    --sidebar-ring: 260 84% 54%;
   }
 
   .dark {
-    /* Dark theme variables */
-    --md-sys-color-primary: 260 84% 74%;
+    /* Dark theme variables - Material Design blue primary */
+    --md-sys-color-primary: 210 100% 70%;
     --md-sys-color-on-primary: 0 0% 0%;
-    --md-sys-color-primary-container: 260 84% 24%;
-    --md-sys-color-on-primary-container: 260 84% 90%;
+    --md-sys-color-primary-container: 210 100% 24%;
+    --md-sys-color-on-primary-container: 210 100% 90%;
     
-    --md-sys-color-secondary: 260 25% 64%;
+    --md-sys-color-secondary: 210 50% 64%;
     --md-sys-color-on-secondary: 0 0% 0%;
-    --md-sys-color-secondary-container: 260 25% 24%;
-    --md-sys-color-on-secondary-container: 260 25% 90%;
+    --md-sys-color-secondary-container: 210 50% 24%;
+    --md-sys-color-on-secondary-container: 210 50% 90%;
     
     --md-sys-color-tertiary: 150 84% 60%;
     --md-sys-color-on-tertiary: 0 0% 0%;
@@ -100,8 +91,8 @@
     
     --md-sys-color-surface: 240 10% 10%;
     --md-sys-color-on-surface: 0 0% 98%;
-    --md-sys-color-surface-variant: 260 10% 16%;
-    --md-sys-color-on-surface-variant: 260 10% 80%;
+    --md-sys-color-surface-variant: 210 10% 16%;
+    --md-sys-color-on-surface-variant: 210 10% 80%;
     
     --md-sys-color-error: 0 84% 60%;
     --md-sys-color-on-error: 0 0% 0%;
@@ -111,8 +102,8 @@
     --md-sys-color-background: 240 10% 7%;
     --md-sys-color-on-background: 0 0% 98%;
     
-    --md-sys-color-outline: 260 10% 50%;
-    --md-sys-color-outline-variant: 260 10% 30%;
+    --md-sys-color-outline: 210 10% 50%;
+    --md-sys-color-outline-variant: 210 10% 30%;
     
     /* Traditional variables for compatibility */
     --background: 240 10% 7%;
@@ -124,10 +115,10 @@
     --popover: 240 10% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 260 84% 74%;
+    --primary: 210 100% 70%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 25% 54%;
+    --secondary: 210 50% 54%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 8% 20%;
@@ -141,18 +132,9 @@
 
     --border: 240 8% 22%;
     --input: 240 8% 16%;
-    --ring: 260 84% 70%;
+    --ring: 210 100% 70%;
 
     --radius: 0.75rem;
-
-    --sidebar-background: 240 10% 9%;
-    --sidebar-foreground: 240 5% 85%;
-    --sidebar-primary: 260 84% 74%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 10% 15%;
-    --sidebar-accent-foreground: 240 5% 90%;
-    --sidebar-border: 240 10% 16%;
-    --sidebar-ring: 260 84% 70%;
   }
 }
 

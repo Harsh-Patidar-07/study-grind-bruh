@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
+import MaterialThemeToggle from './MaterialThemeToggle';
 
 // Import required material components
 import '@material/web/list/list.js';
@@ -89,12 +90,22 @@ const MaterialSidebar = ({ closeSidebar }: SidebarProps) => {
       </div>
       
       <div className="px-3 py-4 flex-1">
-        <p className={cn(
-          "text-xs text-muted-foreground font-medium px-3 py-2 uppercase tracking-wider",
-          isClassroomMode ? "text-genz-green" : "text-primary"
-        )}>
-          {isClassroomMode ? "Classroom Mode" : "Self Study Mode"}
-        </p>
+        <div className="py-2">
+          <div className="flex items-center justify-between px-4 py-2">
+            <div className="flex items-center gap-2">
+              {isClassroomMode ? (
+                <GraduationCap className="h-5 w-5 text-primary" />
+              ) : (
+                <BookOpen className="h-5 w-5 text-primary" />
+              )}
+              <p className="text-base font-medium">
+                {isClassroomMode ? "Classroom Mode" : "Self Study Mode"}
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <md-divider></md-divider>
         
         <div className="mt-2 space-y-1">
           {navItems.map((item) => (
@@ -108,21 +119,45 @@ const MaterialSidebar = ({ closeSidebar }: SidebarProps) => {
             />
           ))}
         </div>
+        
+        <md-divider className="my-4"></md-divider>
+        
+        {/* Mode switching buttons with icons */}
+        <div className="px-4 py-2">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">SWITCH MODE</p>
+          <div className="grid grid-cols-2 gap-2">
+            <Link 
+              to="/self-study"
+              className={cn(
+                "flex flex-col items-center justify-center p-2 rounded-lg transition-colors",
+                !isClassroomMode 
+                  ? "bg-primary/10 text-primary font-medium" 
+                  : "hover:bg-muted"
+              )}
+              onClick={closeSidebar}
+            >
+              <BookOpen className="h-5 w-5 mb-1" />
+              <span className="text-xs">Self Study</span>
+            </Link>
+            <Link 
+              to="/classroom"
+              className={cn(
+                "flex flex-col items-center justify-center p-2 rounded-lg transition-colors",
+                isClassroomMode 
+                  ? "bg-primary/10 text-primary font-medium" 
+                  : "hover:bg-muted"
+              )}
+              onClick={closeSidebar}
+            >
+              <GraduationCap className="h-5 w-5 mb-1" />
+              <span className="text-xs">Classroom</span>
+            </Link>
+          </div>
+        </div>
       </div>
       
-      <div className="mt-auto p-4 border-t border-border">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-primary/80 flex items-center justify-center">
-              <span className="font-bold text-white">U</span>
-            </div>
-            <div>
-              <p className="text-sm font-medium">User</p>
-              <p className="text-xs text-muted-foreground">Student</p>
-            </div>
-          </div>
-          <ThemeToggle />
-        </div>
+      <div className="p-3 border-t border-border">
+        <MaterialThemeToggle />
       </div>
     </div>
   );

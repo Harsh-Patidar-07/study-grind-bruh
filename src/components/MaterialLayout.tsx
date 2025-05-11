@@ -5,9 +5,11 @@ import MaterialHeader from "./MaterialHeader";
 import MaterialSidebar from "./MaterialSidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
+import { Button } from "./ui/button";
 
 const MaterialLayout = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,7 +41,7 @@ const MaterialLayout = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <MaterialHeader />
+      <MaterialHeader toggleSidebar={toggleSidebar} />
       
       <div className="flex flex-1">
         {/* Mobile overlay */}
