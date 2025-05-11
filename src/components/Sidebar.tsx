@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from 'react-router-dom';
-import { Clock, ListChecks, MessageSquare, Upload, FileSearch, BellRing } from 'lucide-react';
+import { Clock, ListChecks, MessageSquare, Upload, FileSearch, BellRing, BookOpen, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface NavItemProps {
@@ -35,6 +35,8 @@ const Sidebar = () => {
   const currentPath = location.pathname;
 
   const navItems = [
+    { icon: BookOpen, label: "Self Study", path: "/self-study" },
+    { icon: GraduationCap, label: "Classroom", path: "/classroom" },
     { icon: Clock, label: "Pomodoro Timer", path: "/pomodoro" },
     { icon: ListChecks, label: "To-Do List", path: "/todo" },
     { icon: MessageSquare, label: "Chat", path: "/chat" },
