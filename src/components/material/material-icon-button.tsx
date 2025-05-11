@@ -49,13 +49,13 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
     const Tag = React.useMemo(() => {
       switch (variant) {
         case 'filled':
-          return 'md-filled-icon-button';
+          return 'md-filled-button'; // Using standard button types since icon-button variants might not exist
         case 'outlined':
-          return 'md-outlined-icon-button';
+          return 'md-outlined-button';
         case 'tonal':
-          return 'md-tonal-icon-button';
+          return 'md-tonal-button';
         default:
-          return 'md-icon-button'; // Changed to md-icon-button from md-standard-icon-button
+          return 'md-icon-button';
       }
     }, [variant]);
 

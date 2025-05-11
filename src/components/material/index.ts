@@ -18,11 +18,6 @@ import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/textfield/filled-text-field.js';
 import '@material/web/progress/circular-progress.js';
 
-// Using proper Material Web icon button component imports
-import '@material/web/icon-button/filled-icon-button.js';
-import '@material/web/icon-button/outlined-icon-button.js';
-import '@material/web/icon-button/icon-button.js';
-
 // For app icons
 import '@material/web/icon/icon.js';
 
