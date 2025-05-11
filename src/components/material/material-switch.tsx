@@ -22,12 +22,12 @@ const MaterialSwitch = React.forwardRef<HTMLElement, MaterialSwitchProps>(
     selected,
     ...props 
   }, ref) => {
-    const handleChange = (e: Event) => {
+    const handleChange = React.useCallback((e: Event) => {
       const target = e.target as HTMLElement & { selected: boolean };
       if (onChange) {
         onChange(target.selected);
       }
-    };
+    }, [onChange]);
 
     React.useEffect(() => {
       const switchElement = ref && 'current' in ref ? ref.current : null;
@@ -41,7 +41,7 @@ const MaterialSwitch = React.forwardRef<HTMLElement, MaterialSwitchProps>(
           switchElement.removeEventListener('change', handleChange);
         };
       }
-    }, [ref, onChange]);
+    }, [ref, handleChange]);
 
     // Update the selected state when checked changes
     React.useEffect(() => {
@@ -57,7 +57,7 @@ const MaterialSwitch = React.forwardRef<HTMLElement, MaterialSwitchProps>(
         ref={ref as any}
         class={cn(className)}
         disabled={disabled}
-        icons={icons}
+        icons={icons ? true : undefined}
         selected={selected ?? defaultChecked}
         {...props}
       />

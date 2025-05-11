@@ -45,7 +45,7 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
     children,
     ...props 
   }, ref) => {
-    // Changed to use icon-button instead of iconbutton
+    // Use the correct component names from Material Web
     const Tag = React.useMemo(() => {
       switch (variant) {
         case 'filled':
@@ -55,7 +55,7 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
         case 'tonal':
           return 'md-tonal-icon-button';
         default:
-          return 'md-icon-button'; // Changed from md-standard-icon-button to md-icon-button
+          return 'md-standard-icon-button'; // Using standard-icon-button which is imported
       }
     }, [variant]);
 

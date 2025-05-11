@@ -17,7 +17,13 @@ import '@material/web/ripple/ripple.js';
 import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/textfield/filled-text-field.js';
 import '@material/web/progress/circular-progress.js';
-import '@material/web/icon-button/icon-button.js'; // Fixed: iconbutton → icon-button
+
+// The correct import path is using individual icon button components
+// Instead of the consolidated path that doesn't exist
+import '@material/web/iconbutton/filled-icon-button.js';
+import '@material/web/iconbutton/outlined-icon-button.js';
+import '@material/web/iconbutton/text-icon-button.js';
+import '@material/web/iconbutton/standard-icon-button.js';
 
 // For app icons
 import '@material/web/icon/icon.js';
