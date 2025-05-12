@@ -1,15 +1,14 @@
-
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const materialTextFieldVariants = cva(
-  "w-full transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+  "w-full transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        filled: "",
-        outlined: "",
+        filled: "bg-md-surface-variant",
+        outlined: "bg-transparent",
       },
       size: {
         default: "text-base",
@@ -53,19 +52,10 @@ const MaterialTextField = React.forwardRef<HTMLElement, MaterialTextFieldProps>(
     type = "text",
     ...props 
   }, ref) => {
-    const Tag = React.useMemo(() => {
-      switch (variant) {
-        case 'filled':
-          return 'md-filled-text-field';
-        default:
-          return 'md-outlined-text-field';
-      }
-    }, [variant]);
+    const Tag = variant === 'filled' ? 'md-filled-text-field' : 'md-outlined-text-field';
 
     const handleValueChange = (e: Event) => {
-      const target = e.target as HTMLElement & { 
-        value: string;
-      };
+      const target = e.target as HTMLElement & { value: string };
       
       if (onChange) {
         const syntheticEvent = {
@@ -88,19 +78,17 @@ const MaterialTextField = React.forwardRef<HTMLElement, MaterialTextFieldProps>(
       
       if (textField) {
         textField.addEventListener('input', handleValueChange);
-        
         return () => {
           textField.removeEventListener('input', handleValueChange);
         };
       }
-    }, [ref, onChange]);
+    }, [ref, handleValueChange]);
 
-    // Update the value when it changes externally
     React.useEffect(() => {
       const textField = ref && 'current' in ref ? ref.current : null;
       
       if (textField && value !== undefined) {
-        (textField as any).value = value as string;
+        (textField as any).value = value;
       }
     }, [value, ref]);
 

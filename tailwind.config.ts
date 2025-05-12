@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,6 +19,36 @@ export default {
     },
     extend: {
       colors: {
+        // Material Design 3 colors
+        "md-primary": "hsl(var(--md-sys-color-primary))",
+        "md-on-primary": "hsl(var(--md-sys-color-on-primary))",
+        "md-primary-container": "hsl(var(--md-sys-color-primary-container))",
+        "md-on-primary-container": "hsl(var(--md-sys-color-on-primary-container))",
+        
+        "md-secondary": "hsl(var(--md-sys-color-secondary))",
+        "md-on-secondary": "hsl(var(--md-sys-color-on-secondary))",
+        "md-secondary-container": "hsl(var(--md-sys-color-secondary-container))",
+        "md-on-secondary-container": "hsl(var(--md-sys-color-on-secondary-container))",
+        
+        "md-tertiary": "hsl(var(--md-sys-color-tertiary))",
+        "md-on-tertiary": "hsl(var(--md-sys-color-on-tertiary))",
+        "md-tertiary-container": "hsl(var(--md-sys-color-tertiary-container))",
+        "md-on-tertiary-container": "hsl(var(--md-sys-color-on-tertiary-container))",
+        
+        "md-error": "hsl(var(--md-sys-color-error))",
+        "md-error-container": "hsl(var(--md-sys-color-error-container))",
+        "md-on-error": "hsl(var(--md-sys-color-on-error))",
+        "md-on-error-container": "hsl(var(--md-sys-color-on-error-container))",
+        
+        "md-surface": "hsl(var(--md-sys-color-surface))",
+        "md-on-surface": "hsl(var(--md-sys-color-on-surface))",
+        "md-surface-variant": "hsl(var(--md-sys-color-surface-variant))",
+        "md-on-surface-variant": "hsl(var(--md-sys-color-on-surface-variant))",
+        
+        "md-outline": "hsl(var(--md-sys-color-outline))",
+        "md-outline-variant": "hsl(var(--md-sys-color-outline-variant))",
+        
+        // Legacy theme colors for backward compatibility
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

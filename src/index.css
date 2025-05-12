@@ -19,26 +19,26 @@
     --md-sys-color-secondary-container: 210 50% 90%;
     --md-sys-color-on-secondary-container: 210 50% 20%;
     
-    --md-sys-color-tertiary: 150 84% 40%;
+    --md-sys-color-tertiary: 280 50% 50%;
     --md-sys-color-on-tertiary: 0 0% 100%;
-    --md-sys-color-tertiary-container: 150 84% 90%;
-    --md-sys-color-on-tertiary-container: 150 84% 20%;
+    --md-sys-color-tertiary-container: 280 50% 90%;
+    --md-sys-color-on-tertiary-container: 280 50% 20%;
     
     --md-sys-color-surface: 0 0% 98%;
     --md-sys-color-on-surface: 0 0% 10%;
-    --md-sys-color-surface-variant: 210 10% 93%;
-    --md-sys-color-on-surface-variant: 210 10% 30%;
+    --md-sys-color-surface-variant: 210 20% 95%;
+    --md-sys-color-on-surface-variant: 210 20% 30%;
     
-    --md-sys-color-error: 0 84% 45%;
+    --md-sys-color-error: 0 100% 45%;
     --md-sys-color-on-error: 0 0% 100%;
-    --md-sys-color-error-container: 0 84% 90%;
-    --md-sys-color-on-error-container: 0 84% 20%;
+    --md-sys-color-error-container: 0 100% 95%;
+    --md-sys-color-on-error-container: 0 100% 30%;
     
-    --md-sys-color-background: 0 0% 98%;
+    --md-sys-color-background: 0 0% 100%;
     --md-sys-color-on-background: 0 0% 10%;
     
-    --md-sys-color-outline: 210 10% 60%;
-    --md-sys-color-outline-variant: 210 10% 80%;
+    --md-sys-color-outline: 210 20% 70%;
+    --md-sys-color-outline-variant: 210 20% 85%;
     
     /* Traditional variables for compatibility */
     --background: 0 0% 98%;
@@ -74,36 +74,36 @@
 
   .dark {
     /* Dark theme variables - Material Design blue primary */
-    --md-sys-color-primary: 210 100% 70%;
-    --md-sys-color-on-primary: 0 0% 0%;
-    --md-sys-color-primary-container: 210 100% 24%;
+    --md-sys-color-primary: 210 100% 65%;
+    --md-sys-color-on-primary: 0 0% 100%;
+    --md-sys-color-primary-container: 210 100% 25%;
     --md-sys-color-on-primary-container: 210 100% 90%;
     
-    --md-sys-color-secondary: 210 50% 64%;
-    --md-sys-color-on-secondary: 0 0% 0%;
-    --md-sys-color-secondary-container: 210 50% 24%;
+    --md-sys-color-secondary: 210 50% 70%;
+    --md-sys-color-on-secondary: 0 0% 100%;
+    --md-sys-color-secondary-container: 210 50% 30%;
     --md-sys-color-on-secondary-container: 210 50% 90%;
     
-    --md-sys-color-tertiary: 150 84% 60%;
-    --md-sys-color-on-tertiary: 0 0% 0%;
-    --md-sys-color-tertiary-container: 150 84% 24%;
-    --md-sys-color-on-tertiary-container: 150 84% 90%;
+    --md-sys-color-tertiary: 280 50% 70%;
+    --md-sys-color-on-tertiary: 0 0% 100%;
+    --md-sys-color-tertiary-container: 280 50% 30%;
+    --md-sys-color-on-tertiary-container: 280 50% 90%;
     
     --md-sys-color-surface: 240 10% 10%;
     --md-sys-color-on-surface: 0 0% 98%;
-    --md-sys-color-surface-variant: 210 10% 16%;
-    --md-sys-color-on-surface-variant: 210 10% 80%;
+    --md-sys-color-surface-variant: 210 20% 20%;
+    --md-sys-color-on-surface-variant: 210 20% 80%;
     
-    --md-sys-color-error: 0 84% 60%;
-    --md-sys-color-on-error: 0 0% 0%;
-    --md-sys-color-error-container: 0 84% 24%;
-    --md-sys-color-on-error-container: 0 84% 90%;
+    --md-sys-color-error: 0 100% 65%;
+    --md-sys-color-on-error: 0 0% 100%;
+    --md-sys-color-error-container: 0 100% 25%;
+    --md-sys-color-on-error-container: 0 100% 90%;
     
     --md-sys-color-background: 240 10% 7%;
     --md-sys-color-on-background: 0 0% 98%;
     
-    --md-sys-color-outline: 210 10% 50%;
-    --md-sys-color-outline-variant: 210 10% 30%;
+    --md-sys-color-outline: 210 20% 50%;
+    --md-sys-color-outline-variant: 210 20% 30%;
     
     /* Traditional variables for compatibility */
     --background: 240 10% 7%;
@@ -298,22 +298,22 @@
 
   /* Material Web theme adaption */
   md-filled-button {
-    --md-filled-button-container-color: hsl(var(--primary));
-    --md-filled-button-label-text-color: hsl(var(--primary-foreground));
+    --md-filled-button-container-color: hsl(var(--md-sys-color-primary));
+    --md-filled-button-label-text-color: hsl(var(--md-sys-color-on-primary));
   }
 
   md-outlined-button {
-    --md-outlined-button-outline-color: hsl(var(--border));
-    --md-outlined-button-label-text-color: hsl(var(--primary));
+    --md-outlined-button-outline-color: hsl(var(--md-sys-color-outline));
+    --md-outlined-button-label-text-color: hsl(var(--md-sys-color-primary));
   }
 
   md-text-button {
-    --md-text-button-label-text-color: hsl(var(--primary));
+    --md-text-button-label-text-color: hsl(var(--md-sys-color-primary));
   }
 
   md-elevated-button {
-    --md-elevated-button-container-color: hsl(var(--background));
-    --md-elevated-button-label-text-color: hsl(var(--primary));
+    --md-elevated-button-container-color: hsl(var(--md-sys-color-surface));
+    --md-elevated-button-label-text-color: hsl(var(--md-sys-color-primary));
   }
 
   md-standard-icon-button {
@@ -321,20 +321,20 @@
   }
 
   md-filled-text-field {
-    --md-filled-text-field-container-color: hsl(var(--input));
-    --md-filled-text-field-label-text-color: hsl(var(--foreground));
+    --md-filled-text-field-container-color: hsl(var(--md-sys-color-surface-variant));
+    --md-filled-text-field-label-text-color: hsl(var(--md-sys-color-primary));
     --md-filled-text-field-input-text-color: hsl(var(--foreground));
   }
 
   md-outlined-text-field {
-    --md-outlined-text-field-outline-color: hsl(var(--border));
+    --md-outlined-text-field-outline-color: hsl(var(--md-sys-color-outline));
     --md-outlined-text-field-label-text-color: hsl(var(--foreground));
     --md-outlined-text-field-input-text-color: hsl(var(--foreground));
   }
 
   md-switch {
-    --md-switch-selected-handle-color: hsl(var(--primary));
-    --md-switch-selected-track-color: hsla(var(--primary) / 0.3);
+    --md-switch-selected-handle-color: hsl(var(--md-sys-color-primary));
+    --md-switch-selected-track-color: hsla(var(--md-sys-color-primary) / 0.3);
     --md-switch-unselected-handle-color: hsl(var(--muted-foreground));
     --md-switch-unselected-track-color: hsla(var(--muted-foreground) / 0.2);
   }
