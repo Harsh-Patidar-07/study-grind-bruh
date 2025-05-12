@@ -3,7 +3,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// Ensure we have the minimal imports needed for the button component
+// Only import available button components
 import '@material/web/button/filled-button';
 import '@material/web/button/outlined-button';
 import '@material/web/button/text-button';
@@ -21,9 +21,9 @@ const materialButtonVariants = cva(
         tonal: "bg-md-secondary-container text-md-on-secondary-container hover:opacity-90",
       },
       size: {
-        default: "text-base",
-        sm: "text-sm",
-        lg: "text-lg",
+        default: "text-base py-2 px-4 rounded-full",
+        sm: "text-sm py-1.5 px-3 rounded-full",
+        lg: "text-lg py-2.5 px-5 rounded-full",
       },
     },
     defaultVariants: {
@@ -54,6 +54,7 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
     children,
     ...props 
   }, ref) => {
+    // Map variants to the correct component names based on available imports
     const Tag = React.useMemo(() => {
       switch (variant) {
         case 'outlined':
@@ -63,7 +64,7 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
         case 'elevated':
           return 'md-elevated-button';
         case 'tonal':
-          // If tonal is requested but not available, fallback to filled
+          // Fallback to filled-button since tonal might not be available
           return 'md-filled-button';
         default:
           return 'md-filled-button';
