@@ -53,7 +53,8 @@ const MaterialIconButton = React.forwardRef<HTMLElement, MaterialIconButtonProps
         case 'outlined':
           return 'md-outlined-button';
         case 'tonal':
-          return 'md-tonal-button';
+          // Fallback to filled-button since tonal might not be available
+          return 'md-filled-button';
         default:
           return 'md-icon-button';
       }

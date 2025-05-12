@@ -4,11 +4,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Ensure we have the minimal imports needed for the button component
-import '@material/web/button/filled-button.js';
-import '@material/web/button/outlined-button.js';
-import '@material/web/button/text-button.js';
-import '@material/web/button/elevated-button.js';
-import '@material/web/button/tonal-button.js';
+import '@material/web/button/filled-button';
+import '@material/web/button/outlined-button';
+import '@material/web/button/text-button';
+import '@material/web/button/elevated-button';
 
 const materialButtonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap gap-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 transition-all",
@@ -64,7 +63,8 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
         case 'elevated':
           return 'md-elevated-button';
         case 'tonal':
-          return 'md-tonal-button';
+          // If tonal is requested but not available, fallback to filled
+          return 'md-filled-button';
         default:
           return 'md-filled-button';
       }
