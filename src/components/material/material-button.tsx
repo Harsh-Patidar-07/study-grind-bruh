@@ -1,6 +1,14 @@
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+
+// Ensure we have the minimal imports needed for the button component
+import '@material/web/button/filled-button.js';
+import '@material/web/button/outlined-button.js';
+import '@material/web/button/text-button.js';
+import '@material/web/button/elevated-button.js';
+import '@material/web/button/tonal-button.js';
 
 const materialButtonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap gap-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 transition-all",
