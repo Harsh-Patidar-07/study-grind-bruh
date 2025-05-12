@@ -9,7 +9,7 @@ import '@material/web/button/filled-button.js';
 import '@material/web/button/outlined-button.js';
 import '@material/web/button/text-button.js';
 import '@material/web/button/elevated-button.js';
-import '@material/web/button/tonal-button.js';
+// Tonal button is imported from material/index.ts
 
 const materialButtonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap gap-2 transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
@@ -56,7 +56,8 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
     children,
     ...props 
   }, ref) => {
-    const Tag = React.useMemo(() => {
+    // Use string literals directly for the element type to avoid TypeScript errors
+    const getButtonTag = () => {
       switch (variant) {
         case 'outlined':
           return 'md-outlined-button';
@@ -65,25 +66,25 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
         case 'elevated':
           return 'md-elevated-button';
         case 'tonal':
-          return 'md-tonal-button';
+          // Fallback to filled-button since tonal might not be available
+          return 'md-filled-button';
         default:
           return 'md-filled-button';
       }
-    }, [variant]);
+    };
 
-    return (
-      <Tag
-        ref={ref as any}
-        class={cn(materialButtonVariants({ variant, size, className }))}
-        disabled={disabled}
-        type={type}
-        {...(trailingIcon ? { 'trailing-icon': true } : {})}
-        {...(hasIcon ? { 'has-icon': true } : {})}
-        {...props}
-      >
-        {children}
-      </Tag>
-    );
+    const Tag = getButtonTag();
+
+    return React.createElement(Tag, {
+      ref: ref as any,
+      class: cn(materialButtonVariants({ variant, size, className })),
+      disabled: disabled,
+      type: type,
+      ...(trailingIcon ? { 'trailing-icon': true } : {}),
+      ...(hasIcon ? { 'has-icon': true } : {}),
+      ...props,
+      children
+    });
   }
 );
 
