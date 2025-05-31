@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from 'react-router-dom';
 import { Clock, ListChecks, MessageSquare, Upload, FileSearch, BellRing } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -44,7 +43,14 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="h-screen w-64 bg-sidebar flex flex-col border-r border-sidebar-border">
+    <div 
+      className="h-screen w-64 bg-sidebar flex flex-col border-r border-sidebar-border"
+      style={{
+        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0)',
+        backgroundSize: '30px 30px',
+        backgroundPosition: '-5px -5px'
+      }}
+    >
       <div className="p-4">
         <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-genz-purple flex items-center justify-center">
