@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { GlowHoverCard } from "@/components/ui/glow-hover-card";
+import { GlowCursor } from "@/components/ui/glow-cursor";
 import { Clock, ListChecks, MessageSquare, Upload, BellRing, FileSearch } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -94,11 +95,14 @@ const Index = () => {
         className="fixed inset-0 -z-10"
         style={{
           backgroundColor: '#1a1a1a',
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
           backgroundSize: '20px 20px',
           backgroundPosition: '-5px -5px'
         }}
       />
+      
+      {/* Glow cursor effect */}
+      <GlowCursor />
       
       {/* Content */}
       <div className="container py-8 relative z-10">
