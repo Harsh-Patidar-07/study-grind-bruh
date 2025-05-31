@@ -88,103 +88,109 @@ const Index = () => {
   };
 
   return (
-    <div 
-      className="container py-8 min-h-screen"
-      style={{
-        backgroundColor: '#1a1a1a',
-        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
-        backgroundSize: '20px 20px',
-        backgroundPosition: '-5px -5px'
-      }}
-    >
-      {/* Hero Section */}
-      <div className="text-center mb-12 mt-4">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-genz-purple to-genz-pink bg-clip-text text-transparent">
-          StudyBST
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          The educational app that roasts you while helping you graduate. Barely.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-4 justify-center">
-          <Button 
-            size="lg"
-            onClick={() => navigate("/pomodoro")}
-            className="animate-pulse-glow"
-          >
-            Start Studying
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            onClick={() => toast({
-              title: "Pro Tip",
-              description: getRandomJoke(),
-            })}
-          >
-            Get Motivated
-          </Button>
+    <div className="min-h-screen relative">
+      {/* Background pattern */}
+      <div 
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundColor: '#1a1a1a',
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+          backgroundPosition: '-5px -5px'
+        }}
+      />
+      
+      {/* Content */}
+      <div className="container py-8 relative z-10">
+        {/* Hero Section */}
+        <div className="text-center mb-12 mt-4">
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-genz-purple to-genz-pink bg-clip-text text-transparent">
+            StudyBST
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            The educational app that roasts you while helping you graduate. Barely.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Button 
+              size="lg"
+              onClick={() => navigate("/pomodoro")}
+              className="animate-pulse-glow"
+            >
+              Start Studying
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => toast({
+                title: "Pro Tip",
+                description: getRandomJoke(),
+              })}
+            >
+              Get Motivated
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature, index) => {
-          // Use GlowHoverCard for the first two features
-          if (index < 2) {
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => {
+            // Use GlowHoverCard for the first two features
+            if (index < 2) {
+              return (
+                <GlowHoverCard 
+                  key={feature.path}
+                  className="cursor-pointer"
+                  onClick={() => navigate(feature.path)}
+                  gradientFrom={feature.gradientFrom}
+                  gradientTo={feature.gradientTo}
+                >
+                  <div className="flex-1">
+                    <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
+                      <feature.icon className={`${feature.color}`} size={24} />
+                    </div>
+                    <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
+                    <p className="text-white/70">{feature.description}</p>
+                  </div>
+                  <div className="mt-4">
+                    <Button variant="ghost" className="w-full justify-start text-white hover:text-white hover:bg-white/10">
+                      Open {feature.title}
+                    </Button>
+                  </div>
+                </GlowHoverCard>
+              );
+            }
+            
+            // Use AnimatedCard for the rest
             return (
-              <GlowHoverCard 
+              <AnimatedCard 
                 key={feature.path}
                 className="cursor-pointer"
                 onClick={() => navigate(feature.path)}
                 gradientFrom={feature.gradientFrom}
                 gradientTo={feature.gradientTo}
               >
-                <div className="flex-1">
+                <div className="p-6">
                   <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
                     <feature.icon className={`${feature.color}`} size={24} />
                   </div>
-                  <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
-                  <p className="text-white/70">{feature.description}</p>
+                  <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
                 </div>
-                <div className="mt-4">
-                  <Button variant="ghost" className="w-full justify-start text-white hover:text-white hover:bg-white/10">
+                <div className="px-6 py-4 border-t border-border bg-muted/30">
+                  <Button variant="ghost" className="w-full justify-start">
                     Open {feature.title}
                   </Button>
                 </div>
-              </GlowHoverCard>
+              </AnimatedCard>
             );
-          }
-          
-          // Use AnimatedCard for the rest
-          return (
-            <AnimatedCard 
-              key={feature.path}
-              className="cursor-pointer"
-              onClick={() => navigate(feature.path)}
-              gradientFrom={feature.gradientFrom}
-              gradientTo={feature.gradientTo}
-            >
-              <div className="p-6">
-                <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
-                  <feature.icon className={`${feature.color}`} size={24} />
-                </div>
-                <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </div>
-              <div className="px-6 py-4 border-t border-border bg-muted/30">
-                <Button variant="ghost" className="w-full justify-start">
-                  Open {feature.title}
-                </Button>
-              </div>
-            </AnimatedCard>
-          );
-        })}
-      </div>
+          })}
+        </div>
 
-      {/* Footer */}
-      <div className="mt-16 text-center text-sm text-muted-foreground">
-        <p className="mb-1">Made with 😭 during finals week</p>
-        <p>© {new Date().getFullYear()} StudyBST - Helping students pretend to be productive since yesterday</p>
+        {/* Footer */}
+        <div className="mt-16 text-center text-sm text-muted-foreground">
+          <p className="mb-1">Made with 😭 during finals week</p>
+          <p>© {new Date().getFullYear()} StudyBST - Helping students pretend to be productive since yesterday</p>
+        </div>
       </div>
     </div>
   );
