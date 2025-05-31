@@ -1,20 +1,20 @@
 
 // Import Material Web Components
-import '@material/web/button/filled-button.js';
-import '@material/web/button/outlined-button.js';
-import '@material/web/button/text-button.js';
-import '@material/web/button/elevated-button.js';
-// Note: We don't import tonal-button because it's not available in the current version
-import '@material/web/icon/icon.js';
-import '@material/web/ripple/ripple.js';
-import '@material/web/checkbox/checkbox.js';
-import '@material/web/switch/switch.js';
-import '@material/web/radio/radio.js';
-import '@material/web/tabs/tabs.js';
-import '@material/web/tabs/primary-tab.js';
-import '@material/web/textfield/filled-text-field.js';
-import '@material/web/textfield/outlined-text-field.js';
-import '@material/web/divider/divider.js';
+import '@material/web/button/filled-button';
+import '@material/web/button/outlined-button';
+import '@material/web/button/text-button';
+import '@material/web/button/elevated-button';
+// Note: If tonal-button isn't available, we'll use the standard buttons instead
+import '@material/web/icon/icon';
+import '@material/web/ripple/ripple';
+import '@material/web/checkbox/checkbox';
+import '@material/web/switch/switch';
+import '@material/web/radio/radio';
+import '@material/web/tabs/tabs';
+import '@material/web/tabs/primary-tab';
+import '@material/web/textfield/filled-text-field';
+import '@material/web/textfield/outlined-text-field';
+import '@material/web/divider/divider';
 
 // Now let's add the React JSX intrinsics declaration to fix TypeScript errors
 declare global {
