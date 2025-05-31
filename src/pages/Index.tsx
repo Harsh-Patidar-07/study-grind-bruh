@@ -88,7 +88,15 @@ const Index = () => {
   };
 
   return (
-    <div className="container py-8">
+    <div 
+      className="container py-8 min-h-screen"
+      style={{
+        backgroundColor: '#1a1a1a',
+        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
+        backgroundSize: '20px 20px',
+        backgroundPosition: '-5px -5px'
+      }}
+    >
       {/* Hero Section */}
       <div className="text-center mb-12 mt-4">
         <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-genz-purple to-genz-pink bg-clip-text text-transparent">
