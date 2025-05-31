@@ -1,7 +1,6 @@
-
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { AnimatedCard } from "@/components/ui/animated-card";
 import { Clock, ListChecks, MessageSquare, Upload, BellRing, FileSearch } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -109,9 +108,9 @@ const Index = () => {
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature) => (
-          <Card 
+          <AnimatedCard 
             key={feature.path}
-            className="border border-border bg-card hover:border-primary/30 transition-all duration-300 cursor-pointer overflow-hidden"
+            className="cursor-pointer"
             onClick={() => navigate(feature.path)}
           >
             <div className="p-6">
@@ -126,7 +125,7 @@ const Index = () => {
                 Open {feature.title}
               </Button>
             </div>
-          </Card>
+          </AnimatedCard>
         ))}
       </div>
 

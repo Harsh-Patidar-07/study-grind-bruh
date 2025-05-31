@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -109,6 +108,14 @@ export default {
           "50%": {
             transform: "translateY(-10px)"
           }
+        },
+        "spin": {
+          from: {
+            transform: "rotate(0deg)"
+          },
+          to: {
+            transform: "rotate(360deg)"
+          }
         }
       },
       animation: {
@@ -116,7 +123,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s infinite",
         "bounce-slight": "bounce-slight 2s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite"
+        "float": "float 6s ease-in-out infinite",
+        "spin": "spin 3s linear infinite"
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
