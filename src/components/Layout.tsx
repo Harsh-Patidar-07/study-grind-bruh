@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
@@ -23,7 +22,7 @@ const Layout = () => {
       {/* Mobile overlay */}
       {isMobile && sidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/60 z-40"
+          className="fixed inset-0 bg-black/30 z-40"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -45,12 +44,12 @@ const Layout = () => {
         sidebarOpen && !isMobile ? "ml-64" : "ml-0"
       )}>
         {/* Mobile sidebar toggle */}
-        <div className="sticky top-0 z-30 bg-background/80 backdrop-blur-sm border-b border-border p-4">
+        <div className="sticky top-0 z-30 bg-transparent backdrop-blur-sm border-b border-white/10 p-4">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
           >
-            {sidebarOpen ? <X size={20} /> : <MenuIcon size={20} />}
+            {sidebarOpen ? <X size={20} className="text-white" /> : <MenuIcon size={20} className="text-white" />}
           </button>
         </div>
         
