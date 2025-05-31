@@ -44,10 +44,11 @@ const Sidebar = () => {
 
   return (
     <div 
-      className="h-screen w-64 bg-sidebar flex flex-col border-r border-sidebar-border"
+      className="h-screen w-64 flex flex-col border-r border-sidebar-border"
       style={{
-        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0)',
-        backgroundSize: '30px 30px',
+        backgroundColor: '#1a1a1a',
+        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
+        backgroundSize: '20px 20px',
         backgroundPosition: '-5px -5px'
       }}
     >
