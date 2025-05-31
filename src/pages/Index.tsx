@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedCard } from "@/components/ui/animated-card";
+import { GlowHoverCard } from "@/components/ui/glow-hover-card";
 import { Clock, ListChecks, MessageSquare, Upload, BellRing, FileSearch } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -119,28 +120,57 @@ const Index = () => {
 
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <AnimatedCard 
-            key={feature.path}
-            className="cursor-pointer"
-            onClick={() => navigate(feature.path)}
-            gradientFrom={feature.gradientFrom}
-            gradientTo={feature.gradientTo}
-          >
-            <div className="p-6">
-              <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
-                <feature.icon className={`${feature.color}`} size={24} />
+        {features.map((feature, index) => {
+          // Use GlowHoverCard for the first two features
+          if (index < 2) {
+            return (
+              <GlowHoverCard 
+                key={feature.path}
+                className="cursor-pointer"
+                onClick={() => navigate(feature.path)}
+                gradientFrom={feature.gradientFrom}
+                gradientTo={feature.gradientTo}
+              >
+                <div className="flex-1">
+                  <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
+                    <feature.icon className={`${feature.color}`} size={24} />
+                  </div>
+                  <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
+                  <p className="text-white/70">{feature.description}</p>
+                </div>
+                <div className="mt-4">
+                  <Button variant="ghost" className="w-full justify-start text-white hover:text-white hover:bg-white/10">
+                    Open {feature.title}
+                  </Button>
+                </div>
+              </GlowHoverCard>
+            );
+          }
+          
+          // Use AnimatedCard for the rest
+          return (
+            <AnimatedCard 
+              key={feature.path}
+              className="cursor-pointer"
+              onClick={() => navigate(feature.path)}
+              gradientFrom={feature.gradientFrom}
+              gradientTo={feature.gradientTo}
+            >
+              <div className="p-6">
+                <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
+                  <feature.icon className={`${feature.color}`} size={24} />
+                </div>
+                <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
               </div>
-              <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </div>
-            <div className="px-6 py-4 border-t border-border bg-muted/30">
-              <Button variant="ghost" className="w-full justify-start">
-                Open {feature.title}
-              </Button>
-            </div>
-          </AnimatedCard>
-        ))}
+              <div className="px-6 py-4 border-t border-border bg-muted/30">
+                <Button variant="ghost" className="w-full justify-start">
+                  Open {feature.title}
+                </Button>
+              </div>
+            </AnimatedCard>
+          );
+        })}
       </div>
 
       {/* Footer */}
