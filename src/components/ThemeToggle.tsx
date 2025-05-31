@@ -1,44 +1,42 @@
 
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Moon, Sun } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useEffect, useState } from "react";
+import { MaterialSwitch } from "./material";
+import { Moon, Sun } from "lucide-react";
 
-const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : 'dark';
-  });
-  const { toast } = useToast();
-  
+const ThemeToggle = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    // Check if user has previously set theme preference
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    // Set initial state based on saved theme or system preference
+    setIsDarkMode(savedTheme === "dark" || (!savedTheme && prefersDark));
+  }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    toast({
-      description: `${newTheme.charAt(0).toUpperCase() + newTheme.slice(1)} mode activated!`,
-      duration: 2000,
-    });
+    const newIsDarkMode = !isDarkMode;
+    setIsDarkMode(newIsDarkMode);
+    
+    // Toggle dark mode class on document
+    if (newIsDarkMode) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   };
 
   return (
-    <Button 
-      variant="ghost" 
-      size="sm" 
-      onClick={toggleTheme}
-      className="w-full justify-start gap-2 mt-2"
-    >
-      {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
-      <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
-    </Button>
+    <MaterialSwitch 
+      checked={isDarkMode} 
+      onChange={toggleTheme}
+      className="inline-flex"
+    />
   );
 };
 
