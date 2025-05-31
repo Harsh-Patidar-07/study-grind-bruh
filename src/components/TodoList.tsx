@@ -176,23 +176,23 @@ const TodoList = () => {
 
   return (
     <div className="max-w-md mx-auto">
-      <div className="flex items-end gap-2 mb-6">
+      <div className="flex items-end gap-2 mb-4">
         <div className="flex-1">
           <Input
             placeholder="Add a task... be honest with yourself"
             value={newTaskText}
             onChange={(e) => setNewTaskText(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && addTodo()}
-            className="shadow-sm"
+            className="input-genz"
           />
         </div>
         
-        <div className="flex items-center border border-border rounded-lg overflow-hidden shadow-sm">
+        <div className="flex items-center border border-border rounded-lg overflow-hidden">
           {[1, 2, 3].map((priority) => (
             <button
               key={priority}
               className={cn(
-                "px-3 py-2 text-xs transition-colors",
+                "px-3 py-2 text-xs transition",
                 newTaskPriority === priority 
                   ? "bg-genz-purple text-white" 
                   : "bg-input text-muted-foreground hover:bg-muted"
@@ -204,7 +204,7 @@ const TodoList = () => {
           ))}
         </div>
         
-        <Button onClick={addTodo} size="icon" className="shadow-sm">
+        <Button onClick={addTodo} size="icon">
           <Plus size={16} />
         </Button>
       </div>
@@ -247,7 +247,7 @@ const TodoList = () => {
 
       <div className="space-y-2">
         {sortedTodos.length === 0 ? (
-          <div className="text-center py-10 text-muted-foreground bg-muted/30 rounded-lg">
+          <div className="text-center py-8 text-muted-foreground">
             <p>No tasks yet. So productive! (jk)</p>
             <p className="text-sm">Add something to pretend you're organized</p>
           </div>
@@ -256,10 +256,10 @@ const TodoList = () => {
             <div 
               key={todo.id} 
               className={cn(
-                "flex items-center gap-3 p-3 border rounded-lg transition-all shadow-sm", 
+                "flex items-center gap-3 p-3 border rounded-lg transition-all", 
                 todo.completed 
                   ? "bg-muted/30 border-muted" 
-                  : "bg-card border-border hover:border-primary/30 hover:shadow-md"
+                  : "bg-card border-border hover:border-primary/30"
               )}
             >
               <div className="flex-shrink-0">
@@ -277,7 +277,7 @@ const TodoList = () => {
                       value={todo.text}
                       onChange={(e) => updateTodo(todo.id, e.target.value)}
                       className={cn(
-                        "bg-transparent w-full outline-none transition-colors", 
+                        "bg-transparent w-full outline-none", 
                         todo.completed && "text-muted-foreground"
                       )}
                       disabled={todo.completed}
@@ -300,7 +300,7 @@ const TodoList = () => {
                       <button
                         key={priority}
                         className={cn(
-                          "w-7 h-7 flex items-center justify-center text-xs transition-colors",
+                          "w-7 h-7 flex items-center justify-center text-xs",
                           todo.priority === priority 
                             ? "bg-genz-purple text-white" 
                             : "bg-input text-muted-foreground hover:bg-muted"
@@ -316,7 +316,7 @@ const TodoList = () => {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="text-muted-foreground hover:text-destructive transition-colors" 
+                  className="text-muted-foreground hover:text-destructive" 
                   onClick={() => deleteTodo(todo.id)}
                 >
                   <Trash2 size={16} />

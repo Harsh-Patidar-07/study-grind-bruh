@@ -21,7 +21,7 @@ const announcements: Announcement[] = [
   {
     id: '1',
     title: 'Midterm Exam Postponed',
-    content: "The midterm exam scheduled for next Friday has been postponed to the following Monday. You have more time to pretend you're going to study! 📚",
+    content: 'The midterm exam scheduled for next Friday has been postponed to the following Monday. You have more time to pretend you're going to study! 📚',
     author: 'Prof. Martinez',
     course: 'Advanced Biology',
     date: new Date('2025-05-05T10:30:00'),

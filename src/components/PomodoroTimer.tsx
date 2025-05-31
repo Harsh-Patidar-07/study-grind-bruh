@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from "@/components/ui/button";
@@ -145,28 +146,28 @@ const PomodoroTimer = () => {
   };
 
   return (
-    <div className="card-genz max-w-md mx-auto shadow-md">
+    <div className="card-genz max-w-md mx-auto">
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-1">
           {isBreak ? "Chill Time" : "Focus Time"} 
           {isBreak ? " 😌" : " 🧠"}
         </h2>
-        <p className="text-muted-foreground text-sm mb-6">
+        <p className="text-muted-foreground text-sm mb-4">
           {isBreak 
             ? "scroll mindlessly like the zombie you are" 
             : "pretend to be productive for once"}
         </p>
         
-        <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full border-4 border-genz-purple/30 flex items-center justify-center mx-auto mb-8 relative">
+        <div className="w-48 h-48 rounded-full border-4 border-genz-purple/30 flex items-center justify-center mx-auto mb-8 relative">
           <div className="absolute inset-1 rounded-full overflow-hidden">
             <div 
-              className={`h-full w-full absolute top-0 transition-all duration-300 ${isBreak ? 'bg-gradient-to-tr from-genz-blue to-genz-green' : 'bg-gradient-to-tr from-genz-purple to-genz-pink'}`} 
+              className={`h-full w-full absolute top-0 transition-all duration-1000 ${isBreak ? 'bg-gradient-to-tr from-genz-blue to-genz-green' : 'bg-gradient-to-tr from-genz-purple to-genz-pink'}`} 
               style={{ height: `${progress}%`, top: `${100 - progress}%` }}
             ></div>
           </div>
           <div className="z-10">
-            <div className="text-5xl md:text-6xl font-bold">{formatTime(time)}</div>
-            <div className="text-sm text-muted-foreground mt-2">
+            <div className="text-4xl font-bold">{formatTime(time)}</div>
+            <div className="text-xs text-muted-foreground mt-1">
               {isBreak ? "break" : "focus"} • cycle {cycles + 1}
             </div>
           </div>
@@ -174,7 +175,7 @@ const PomodoroTimer = () => {
         
         <div className="flex gap-3 mb-8 justify-center">
           {!isActive ? (
-            <Button onClick={startTimer} className="flex items-center gap-2 px-6">
+            <Button onClick={startTimer} className="flex items-center gap-2">
               <Play size={18} />
               <span>Start</span>
             </Button>
@@ -194,7 +195,7 @@ const PomodoroTimer = () => {
           </Button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium mb-2">Focus Length: {workTime} min</label>
             <Slider 
@@ -204,7 +205,6 @@ const PomodoroTimer = () => {
               step={5} 
               disabled={isActive}
               onValueChange={(vals) => setWorkTime(vals[0])} 
-              className="py-2"
             />
           </div>
           <div>
@@ -216,7 +216,6 @@ const PomodoroTimer = () => {
               step={1} 
               disabled={isActive}
               onValueChange={(vals) => setBreakTime(vals[0])} 
-              className="py-2"
             />
           </div>
         </div>
