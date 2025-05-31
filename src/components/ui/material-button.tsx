@@ -9,7 +9,7 @@ import '@material/web/button/filled-button.js';
 import '@material/web/button/outlined-button.js';
 import '@material/web/button/text-button.js';
 import '@material/web/button/elevated-button.js';
-// Tonal button is imported from material/index.ts
+import '@material/web/button/tonal-button.js';
 
 const materialButtonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap gap-2 transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
@@ -56,8 +56,7 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
     children,
     ...props 
   }, ref) => {
-    // Use string literals directly for the element type to avoid TypeScript errors
-    const getButtonTag = () => {
+    const Tag = React.useMemo(() => {
       switch (variant) {
         case 'outlined':
           return 'md-outlined-button';
@@ -66,25 +65,25 @@ const MaterialButton = React.forwardRef<HTMLElement, MaterialButtonProps>(
         case 'elevated':
           return 'md-elevated-button';
         case 'tonal':
-          // Fallback to filled-button since tonal might not be available
-          return 'md-filled-button';
+          return 'md-tonal-button';
         default:
           return 'md-filled-button';
       }
-    };
+    }, [variant]);
 
-    const Tag = getButtonTag();
-
-    return React.createElement(Tag, {
-      ref: ref as any,
-      class: cn(materialButtonVariants({ variant, size, className })),
-      disabled: disabled,
-      type: type,
-      ...(trailingIcon ? { 'trailing-icon': true } : {}),
-      ...(hasIcon ? { 'has-icon': true } : {}),
-      ...props,
-      children
-    });
+    return (
+      <Tag
+        ref={ref as any}
+        class={cn(materialButtonVariants({ variant, size, className }))}
+        disabled={disabled}
+        type={type}
+        {...(trailingIcon ? { 'trailing-icon': true } : {})}
+        {...(hasIcon ? { 'has-icon': true } : {})}
+        {...props}
+      >
+        {children}
+      </Tag>
+    );
   }
 );
 

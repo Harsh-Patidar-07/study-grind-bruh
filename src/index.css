@@ -150,20 +150,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.14);
 }
 
-@layer components {
-  /* Material Design 3 Bottom Navigation */
-  .md3-bottom-navigation {
-    @apply fixed bottom-0 left-0 right-0 flex justify-around items-center bg-md-surface border-t border-md-outline-variant px-4 py-2;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.12);
-  }
+/* Material Design 3 Bottom Navigation */
+.md3-bottom-navigation {
+  @apply fixed bottom-0 left-0 right-0 flex justify-around items-center bg-md-surface border-t border-md-outline-variant px-4 py-2 md3-elevation-2;
+}
 
-  .md3-bottom-navigation-item {
-    @apply flex flex-col items-center justify-center p-2 rounded-full cursor-pointer transition-all;
-  }
+.md3-bottom-navigation-item {
+  @apply flex flex-col items-center justify-center p-2 rounded-full cursor-pointer transition-all;
+}
 
-  .md3-bottom-navigation-item-active {
-    @apply bg-md-primary-container text-md-on-primary-container px-4 rounded-full;
-  }
+.md3-bottom-navigation-item-active {
+  @apply bg-md-primary-container text-md-on-primary-container px-4 rounded-full;
 }
 
 /* Ripple effect animation for Material Design interactions */
@@ -198,29 +195,15 @@
   transition: 0s;
 }
 
-@layer utilities {
-  /* Material Design 3 state layers - Define custom utility classes here */
-  .md3-state-layer-hover {
-    background-color: rgba(var(--md-sys-color-on-surface), 0.08);
-  }
-  
-  .dark .md3-state-layer-hover {
-    background-color: rgba(var(--md-sys-color-on-surface), 0.1);
-  }
+/* Material Design 3 state layers */
+.md3-state-layer-hover {
+  @apply bg-md-on-surface/8 dark:bg-md-on-surface/10;
+}
 
-  .md3-state-layer-focus {
-    background-color: rgba(var(--md-sys-color-on-surface), 0.12);
-  }
-  
-  .dark .md3-state-layer-focus {
-    background-color: rgba(var(--md-sys-color-on-surface), 0.15);
-  }
+.md3-state-layer-focus {
+  @apply bg-md-on-surface/12 dark:bg-md-on-surface/15;
+}
 
-  .md3-state-layer-pressed {
-    background-color: rgba(var(--md-sys-color-on-surface), 0.16);
-  }
-  
-  .dark .md3-state-layer-pressed {
-    background-color: rgba(var(--md-sys-color-on-surface), 0.2);
-  }
+.md3-state-layer-pressed {
+  @apply bg-md-on-surface/16 dark:bg-md-on-surface/20;
 }
