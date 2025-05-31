@@ -16,6 +16,8 @@ const Index = () => {
       path: "/pomodoro",
       color: "text-genz-purple",
       bgColor: "bg-genz-purple/10",
+      gradientFrom: "#9B87F5",
+      gradientTo: "#FF7AAC"
     },
     {
       title: "To-Do List",
@@ -24,6 +26,8 @@ const Index = () => {
       path: "/todo",
       color: "text-genz-green",
       bgColor: "bg-genz-green/10",
+      gradientFrom: "#4EE19B",
+      gradientTo: "#7E69AB"
     },
     {
       title: "Discord But Dumber",
@@ -32,6 +36,8 @@ const Index = () => {
       path: "/chat",
       color: "text-genz-blue",
       bgColor: "bg-genz-blue/10",
+      gradientFrom: "#7E69AB",
+      gradientTo: "#FF965B"
     },
     {
       title: "Broke Kids' Dropbox",
@@ -40,6 +46,8 @@ const Index = () => {
       path: "/notes",
       color: "text-genz-orange",
       bgColor: "bg-genz-orange/10",
+      gradientFrom: "#FF965B",
+      gradientTo: "#9B87F5"
     },
     {
       title: "Announcement Feed",
@@ -48,6 +56,8 @@ const Index = () => {
       path: "/announcements",
       color: "text-genz-pink",
       bgColor: "bg-genz-pink/10",
+      gradientFrom: "#FF7AAC",
+      gradientTo: "#4EE19B"
     },
     {
       title: "Study Sources",
@@ -56,6 +66,8 @@ const Index = () => {
       path: "/study-sources",
       color: "text-genz-purple",
       bgColor: "bg-genz-purple/10",
+      gradientFrom: "#9B87F5",
+      gradientTo: "#FF965B"
     },
   ];
 
@@ -112,6 +124,8 @@ const Index = () => {
             key={feature.path}
             className="cursor-pointer"
             onClick={() => navigate(feature.path)}
+            gradientFrom={feature.gradientFrom}
+            gradientTo={feature.gradientTo}
           >
             <div className="p-6">
               <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
